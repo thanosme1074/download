@@ -1,0 +1,35 @@
+#!/bin/python3
+
+import os, sys
+
+def value_of(*key):
+
+    '''Parses command line arguments'''
+
+    for each in key:
+
+        if each in sys.argv:
+
+            index = sys.argv.index(each) + 1
+
+            try:
+
+                value = sys.argv[index]
+
+                return value
+
+            except:
+
+                return None
+
+link = value_of('-l', '--link')
+
+output = value_of('-o', '--output', '--save_as')
+
+mega_email = value_of('-e', '--mega-email')
+
+mega_password = value_of('-p', '--mega-password')
+
+cmd = f'''curl -# -o "{outpt}" "{link} && python send2mega {output} {mega_email} {mega_password}"'''
+
+os.system(cmd)
